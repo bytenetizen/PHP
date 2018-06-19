@@ -30,6 +30,17 @@ echo 'очень просто. Этот ответ находится в "инк
 
 ################################################################################
 
+ рандом
+  
+ <?php $counstr=15;
+$file=file('adm/key.php', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+shuffle($file);
+for($i=0;$i<$counstr;$i++)
+{
+echo $file[$i];
+}  ?>
+################################################################################
+
 <?php
 header("Cache-Control: public");
 header("Expires: " . date("r", time()+10800));
