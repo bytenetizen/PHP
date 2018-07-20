@@ -60,3 +60,61 @@ $last_modified_time = 1504224000;
 header('Last-Modified: '.gmdate('D, d M Y H:i:s', $last_modified_time).' GMT');
 ?>
 ################################################################################
+Проверка на код 200
+
+$url = array(
+		'http://site1.com/',
+		'http://site2.com/',
+		'http://site3.com/',
+		'http://site4.com/'
+);
+ 
+foreach ($url as $val)
+{
+	$answer = check_http_status($val);
+	if ($answer == 200)
+		echo 'Site '.$val.' is avaliable.', PHP_EOL;
+	else
+	{
+		if ($answer == 28) // See code status - http://curl.haxx.se/libcurl/c/libcurl-errors.html
+		{
+			echo 'Resource '.$val.' is not responding. Time out operation (more than 10 sec)'. PHP_EOL;
+			// Sending notification
+			$from = "test@test.com";
+			$to = "admin@test.com";
+			$subject = "Resource is not available";
+			$message = "Resource $val is not available.\r\nHTTP status: $answer";
+			mail($to, $subject, $message,"Content-type:text/plain; charset = UTF-8\r\nFrom:$from");
+ 
+		}
+		else
+		{
+			echo 'Resource '.$val.' is not avaliable. Reason: '.$answer.'. ', PHP_EOL;
+			// Sending notification
+			$from = "test@test.com";
+			$to = "admin@test.com";
+			$subject = "Resourceis not available";
+			$message = "Resource $val is not available.\r\nHTTP status: $answer";
+			mail($to, $subject, $message,"Content-type:text/plain; charset = UTF-8\r\nFrom:$from");
+		}
+	}
+}
+ 
+function check_http_status($url)
+{
+	$user_agent = 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)';
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_VERBOSE, false);
+	curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+	$page = curl_exec($ch);
+ 
+	$error = curl_errno($ch);
+	if (!empty($error))
+		return $error;
+ 
+	return ($httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE));
+	curl_close($ch);
+}
