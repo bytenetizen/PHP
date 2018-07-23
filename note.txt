@@ -4,6 +4,13 @@ eregi('шаблон', $s)
 preg_match('/шаблон/', $s)
 preg_match('/шаблон/i', $s)
 
+################################################################
+$to = "info@site.ru"; /*Укажите ваш адрес электронной почты*/
+    $headers = "Content-type: text/plain; charset = utf-8";
+    $subject = "$formData";
+    $message = "$formData\n\nИмя: $name \n\nТелефон: $surname \n\n$musicid";
+    $send = mail ($to, $subject, $message, $headers);
+
 ###############################################################################
 Вывод информации на определенной странице 
 
