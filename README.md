@@ -22,3 +22,10 @@ if ($today >= '2018-07-24 18:24:00' && $today <= '2018-07-24 18:25:00' ){
 }else{
     echo '<br>no fo';
 }
+
+
+function myfunction (){
+    
+    echo '<br>he my function';
+}
+myfunction ();
