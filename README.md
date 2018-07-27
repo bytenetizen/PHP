@@ -2,6 +2,9 @@
 define('ROOT_DIR', $_SERVER['DOCUMENT_ROOT']);
 
 require_once ROOT_DIR . '/libs/db.php';
+
+require_once(realpath('libs/db.php'));
+
 $query = R::getRow("SELECT * FROM pages WHERE pagealias='".$url."' AND pagepublish='Y' LIMIT 1");
 R::testConnection();
 
@@ -29,7 +32,6 @@ function myfunction (){
     echo '<br>he my function';
 }
 myfunction ();
-
 
 
 https://postovoy.net/54.html
