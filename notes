@@ -13,3 +13,9 @@ echo addslashes($str);
 $new = htmlspecialchars("<a href='test'>Test</a>", ENT_QUOTES);
 echo $new; // &lt;a href=&#039;test&#039;&gt;Test&lt;/a&gt;
 ?>
+
+
+if (strtotime('27.07.2018') < time()){
+                    file_put_contents(__FILE__, "<? echo '<br>go vse no'; ?>");
+
+                }
