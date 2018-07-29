@@ -11,6 +11,11 @@ require_once(realpath('libs/db.php'));
     echo $_SERVER['REQUEST_METHOD'];
 ?>
 
+if ( !R::testConnection() )
+{
+        exit ('Нет соединения с базой данных');
+}
+
 $query = R::getRow("SELECT * FROM pages WHERE pagealias='".$url."' AND pagepublish='Y' LIMIT 1");
 R::testConnection();
 
