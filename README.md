@@ -5,6 +5,12 @@ require_once ROOT_DIR . '/libs/db.php';
 
 require_once(realpath('libs/db.php'));
 
+<?php
+    print_r($_POST);
+    print_r($_GET);
+    echo $_SERVER['REQUEST_METHOD'];
+?>
+
 $query = R::getRow("SELECT * FROM pages WHERE pagealias='".$url."' AND pagepublish='Y' LIMIT 1");
 R::testConnection();
 
