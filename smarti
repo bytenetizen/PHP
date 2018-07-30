@@ -3,3 +3,11 @@
                 {else}
                     smaller 2015/12/10- {$smarty.now|date_format:"%Y/%m/%d"}
                 {/if}
+                
+                {if $weekend || $smarty.now >= strtotime("2018-07-28") && $smarty.now < strtotime("2018-08-20")}
+                <div class="left">Популярне з Вівсянка-шоу</div>
+                <div class="right more-title"><a href="/utro/best/pop/year/">ще</a></div>
+            {else}
+                <div class="left">Найсвіжіше з Вівсянка-шоу</div>
+                <div class="right more-title"><a href="/utro/best/">ще</a></div>
+            {/if}
