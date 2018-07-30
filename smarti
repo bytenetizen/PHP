@@ -1,0 +1,5 @@
+{if $smarty.now|date_format:"%Y/%m/%d" > '2018/08/26'}
+                    greater 2015/12/10- {$smarty.now|date_format:"%Y/%m/%d"}
+                {else}
+                    smaller 2015/12/10- {$smarty.now|date_format:"%Y/%m/%d"}
+                {/if}
