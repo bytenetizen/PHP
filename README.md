@@ -16,6 +16,16 @@ if ( !R::testConnection() )
         exit ('Нет соединения с базой данных');
 }
 
+
+
+<?php
+удаляет все старше 30 дней
+$del_date=$time-2592000;    //время в секундах (2592000 сек. = 30 дней)
+$res=mysqli_query($db,"DELETE FROM ocenka_comment WHERE date<".$del_date."");
+?>
+
+
+
 $query = R::getRow("SELECT * FROM pages WHERE pagealias='".$url."' AND pagepublish='Y' LIMIT 1");
 R::testConnection();
 
