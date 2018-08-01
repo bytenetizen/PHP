@@ -5,6 +5,9 @@ require_once ROOT_DIR . '/libs/db.php';
 
 require_once(realpath('libs/db.php'));
 
+        $time_sql = "AND utro_podcast.stamp BETWEEN " .strtotime('-30 days', time()). " AND " .mktime(0,0,0,date('m'),date('d'),date('Y'));
+
+
 <?php
     print_r($_POST);
     print_r($_GET);
