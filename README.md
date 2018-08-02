@@ -8,12 +8,28 @@ require_once(realpath('libs/db.php'));
         $time_sql = "AND utro_podcast.stamp BETWEEN " .strtotime('-30 days', time()). " AND " .mktime(0,0,0,date('m'),date('d'),date('Y'));
 
 
+#############################################################
+<form method="post">
+  ...
+  <input type="submit" name="save" value="Сохранить" />
+  <input type="submit" name="delete" value="Удалить" />
+</form>
+PHP:
+
+if (isset($_POST['save'])) {
+  ...
+}
+else if (isset($_POST['delete'])) {
+  ...
+}
+###################################################
+
 <?php
     print_r($_POST);
     print_r($_GET);
     echo $_SERVER['REQUEST_METHOD'];
 ?>
-
+###################################################
 if ( !R::testConnection() )
 {
         exit ('Нет соединения с базой данных');
