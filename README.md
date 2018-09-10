@@ -38,6 +38,15 @@ if ( !R::testConnection() )
 }
 
 
+ $phrase = file_get_contents('https://o.tavrmedia.ua/relaxcafe');
+ 
+ 
+ //$phrase  = "You should eat % fruits, vegetables, and fiber every day.";
+$healthy = array("fruits", "vegetables", "fiber", "%", "id");//ищет
+$yummy   = array("pizza", "beer", "ice cream", "", "idsd");//менняет на это
+$newphrase = str_replace($healthy, $yummy, $phrase);
+var_dump($newphrase);
+
 
 <?php
 удаляет все старше 30 дней
