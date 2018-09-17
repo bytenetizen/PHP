@@ -1,0 +1,9 @@
+$search = array ("/images/cover/","/56x56-000000-80-0-0.jpg");
+ $trach = array ("");
+//$url = "https://cors.io/?https://api.deezer.com/search?q=artist:'Океан%Ельзи' track:'Не%йди'";
+
+$data=file_get_contents("https://cors.io/?https://api.deezer.com/search?q=artist:'Океан%Ельзи'%track:'Не%йди'");
+$data = json_decode($data, true);
+$urls =$data['data'][0]['album']['cover_small'];
+$url = str_replace($search, $trach, parse_url($urls));
+echo $url["path"];
