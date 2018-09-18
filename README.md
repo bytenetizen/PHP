@@ -15,7 +15,18 @@ if (isset($_POST['g-recaptcha-response'])) {
 } else {
     exit('Вы не прошли валидацию reCaptcha');
 }
-
+##################################################################
+//        $config = DOCUMENT_ROOT . '/post_log.txt';
+//        $s = fopen($config,"a+");
+//        fwrite($s,$_POST."\r\n");
+//        fclose($s);
+//
+//        $config = DOCUMENT_ROOT . '/post_log.txt';
+//        $log = new Logging_air();
+//        $log->lfile($config);
+//        $log->lwrite($_POST);
+//        $log->lclose();
+#################################################################
 #
 https://github.com/BRACKETS-by-TRIAD/craftable
 
