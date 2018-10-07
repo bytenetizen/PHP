@@ -1,0 +1,91 @@
+#foreach vs for
+hit24fg();
+
+function hit24fg() {
+    $arr = array('hit24ukr', 'hit24best', 'hit24top');
+   
+//   $res = R::getAll("SELECT * FROM `wpxe_posts` WHERE `type` = '".$type."' LIMIT 5");
+//         $limit = count($res);
+//         //старт
+//          var_dump($res);
+//          var_dump($type);
+//          exit;
+    //exit;
+    foreach ($arr as &$value) {
+//Тело
+        //Определяем тип
+        if($value == 'hit24ukr'){
+            $type = 'ukr';
+        }
+        elseif($value == 'hit24best'){$type = 'best';}
+elseif($value == 'hit24top'){$type = 'top';}
+
+        $time24 = strtotime('-24 hours');
+        $res = R::getAll("SELECT `id`, `post_date`, `post_title`, `post_status`, `type` FROM `wpxe_posts` WHERE `type` = '".$type."' LIMIT 5");
+        $limit = count($res);
+        
+        //старт
+        //  var_dump($res);
+        //  var_dump($type);
+         //exit;
+         $ret= array();
+        for ($i = 0; $i < $limit; $i++) {
+            $time = $res[$i]["post_date"];
+            $j = ($cap ? $j+1 : $i);
+            if($j == $limit)
+                continue;
+if($type == "ukr"){
+                $img_cover = "https://cdns-images.dzcdn.net/images/cover/".$res[$i]['type']."/250x250-000000-80-0-0.jpg";
+            }elseif ($type == "best"){
+                $img_cover = "https://www.hitfm.ua/beststatic/img/HitFM_Playlist_noyoutube_pic_240x136.png";
+            }else{
+                $img_cover = "https://www.hitfm.ua/static/img/content/new_main/HitFM_logo.png";
+            }
+            
+
+            $ret[$i]= array(
+                "singer" => $res[$i]["post_title"],
+                "id" => $res[$i]["id"],
+                "song" => $res[$i]["post_status"],
+                "type" => $type,
+                "typeas" => $j,
+                "cover" => $img_cover,
+                "id" => $res[$i]["id"],
+            );
+        }
+        //Конец фор
+        //финиш
+
+        // Создаем каналы 'hit24ukr', 'hit24best', 'hit24top'
+        
+        // строка, которую будем записывать
+//$text = "Какой-то текст";
+ 
+// открываем файл, если файл не существует,
+//делается попытка создать его
+$fp = fopen("{$value}.txt", "w");
+// echo json_encode($res);
+ $ret = json_encode($ret);
+// записываем в файл текст
+fwrite($fp, $ret);
+ 
+// закрываем
+fclose($fp);
+        echo json_encode($ret);
+     /*   $c = curl_init();
+        curl_setopt($c, CURLOPT_URL, 'http://195.95.206.146:9561/pvp/');
+        curl_setopt($c, CURLOPT_POST, true);
+        curl_setopt($c, CURLOPT_POSTFIELDS, "zhazha={$value}&cooldata=".urlencode(json_encode($ret)));
+        curl_exec ($c);
+        curl_close ($c);
+        //echo json_encode($ret);
+        $this->saveJSONPlayList(json_encode($ret),"{$value}");*/
+        //echo 'ok';
+        //$this->test24();
+
+        //exit();
+//var_dump($ret); 
+
+    }//end foreach
+
+}
