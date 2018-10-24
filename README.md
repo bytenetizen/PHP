@@ -1,6 +1,6 @@
 # PHP
 http://www.php.su/lessons/?lesson_14
-
+https://laraveladminpanel.com/
 capcha
 if (isset($_POST['g-recaptcha-response'])) {
     $url_to_google_api = "https://www.google.com/recaptcha/api/siteverify";
