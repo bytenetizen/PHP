@@ -1,7 +1,7 @@
-86937	isset
+86937	isset - определяет, установлена ли переменная.
 43159	echo
-31697	empty
-29252	substr
+31697	empty — Проверяет, пуста ли переменная
+29252	substr -- Возвращает подстроку $rest = substr("abcdef", 0, 8); // возвращает "abcdef" $rest = substr("abcdef", -2);    // возвращает "ef"
 26146	count
 24248	is_array
 22572	strlen
