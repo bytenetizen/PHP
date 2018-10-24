@@ -2,12 +2,16 @@
 43159	echo
 31697	empty — Проверяет, пуста ли переменная
 29252	substr -- Возвращает подстроку $rest = substr("abcdef", 0, 8); // возвращает "abcdef" $rest = substr("abcdef", -2);    // возвращает "ef"
-26146	count
-24248	is_array
-22572	strlen
+26146	count  -- Посчитать количество элементов массива или количество свойств объекта
+24248	is_array - определяет, является ли переменная массивом.
+22572	strlen - -- Возвращает длину строки $str = ' ab cd '; echo strlen($str); // 7
 19365	sprintf
-18090	unset
-16584	str_replace
+18090	unset - - разустанавливает данную переменную. unset ($foo1, $foo2, $foo3);
+16584	str_replace --  Заменяет строку поиска на строку замены
+      $phrase  = "You should eat fruits, vegetables, and fiber every day.";
+      $healthy = array("fruits", "vegetables", "fiber");
+      $yummy   = array("pizza", "beer", "ice cream");
+      $newphrase = str_replace($healthy, $yummy, $phrase);
 15462	strpos
 15241	preg_match
 14630	in_array
