@@ -908,7 +908,7 @@
 8	mb_substitute_character
 8	wddx_serialize_value
 8	bcsqrt
-8	mb_strimwidth
+8	mb_strimwidth - Обрезает строку echo mb_strimwidth("Hello World", 0, 10, "...");
 8	imagepolygon
 8	posix_setuid
 8	xdebug_start_code_coverage
