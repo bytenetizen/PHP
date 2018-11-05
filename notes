@@ -5,7 +5,19 @@ $str = "Is your name O'reilly?";
 // выводит: Is your name O\'reilly?
 echo addslashes($str);
 ?>
-
+##############################################################
+$dateModified = $defaultdb->TimeContent($alias);
+ $db = $cache->read($file_name.'.tmp'); //17 это например id статьи
+/*$cache_file = $_SERVER['DOCUMENT_ROOT'].'/__mycache/'.
+        md5( $sql ).sha1($login_user).'.txt';*/
+      //   || strtotime($dateModified['dateModified'])
+$cache_file = $_SERVER['DOCUMENT_ROOT'].'/path/cache/'.$file_name.'.tmp';
+if (file_exists($cache_file) && ( time() - filemtime($cache_file) ) > 8600 ){
+    $db = $defaultdb->content($alias);
+    $cache->write($file_name.'.tmp', $db);
+   
+}
+###############################################################3
 
 
 
