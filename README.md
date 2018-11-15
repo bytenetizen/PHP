@@ -1,4 +1,7 @@
 # PHP
+ $start = microtime(true);
+ $time = microtime(true) - $start;
+       echo $time;
 http://www.php.su/lessons/?lesson_14
 https://laraveladminpanel.com/
 capcha
