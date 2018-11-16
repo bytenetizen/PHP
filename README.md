@@ -1,4 +1,6 @@
 # PHP
+https://habr.com/post/260201/
+#
  $start = microtime(true);
  $time = microtime(true) - $start;
        echo $time;
