@@ -1,0 +1,19 @@
+<?php
+//simple counter to test sessions. should increment on each page reload.
+session_start();
+$count = isset($_SESSION['count']) ? $_SESSION['count'] : 1;
+
+echo $count;
+
+//$_SESSION['count'] = ++$count;
+
+echo $_SESSION['ip'];
+$_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
+
+###########################################################################
+$redis = new Predis\Client(array(
+    "scheme" => "tcp",
+    "host" => "127.0.0.1",
+    "port" => '6379'
+   
+   ));
