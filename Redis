@@ -1,0 +1,8 @@
+######################ONLINE##############################
+$key_rand = rand(35,60); // Hash
+
+$redis->sadd("{$key_rand}", 'Any');
+$redis->expireat("{$key_rand}", time() + 180); // time to end
+
+$result_all = count($redis->keys('*'));
+echo $result_all;
