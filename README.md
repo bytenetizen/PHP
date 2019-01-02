@@ -1,4 +1,20 @@
 # PHP
+$number = 151;
+switch (true){
+    case ($number > 0 && $number <= 10):
+        echo 'больше 0 и меньше 10 ';
+        break;
+    case ($number > 10 && $number <= 150):
+        echo 'больше 10 и меньше 150 ';
+        break;
+    default:
+        echo 'ХЗ что тут ';
+        break;
+
+}
+#######################################################
+
+
 https://habr.com/post/260201/
 #
  $start = microtime(true);
