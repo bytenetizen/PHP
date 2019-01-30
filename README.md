@@ -1,4 +1,10 @@
 # PHP
+R::ext('xdispense', function($table_name){
+return R::getRedBean()->dispense($table_name);
+});
+$note = R::xdispense('lead_notes');
+
+
 $number = 151;
 switch (true){
     case ($number > 0 && $number <= 10):
