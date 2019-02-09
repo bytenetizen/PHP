@@ -7,3 +7,31 @@ $data = json_decode($data, true);
 $urls =$data['data'][0]['album']['cover_small'];
 $url = str_replace($search, $trach, parse_url($urls));
 echo $url["path"];
+
+$baseUrl = 'https://e-ukrservice.com/';
+$logFile = fopen('log.txt', 'w');
+
+$params = [
+    CURLOPT_VERBOSE => true,
+    CURLOPT_STDERR => $logFile,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_URL => $baseUrl,
+    CURLOPT_SSL_VERIFYPEER => false,
+    CURLOPT_SSL_VERIFYHOST => false,
+    CURLOPT_COOKIEJAR => 'cookie.txt',
+    CURLOPT_COOKIEFILE => 'cookie.txt',
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTPHEADER => [
+        'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+        'accept: */*',
+        'accept-encoding: gzip'
+    ]
+];
+
+$ch = curl_init();
+
+curl_setopt_array($ch, $params);
+
+if (($exec = curl_exec($ch)) !== false) {
+    print $exec;
+}
