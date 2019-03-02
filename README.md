@@ -3,7 +3,21 @@ R::ext('xdispense', function($table_name){
 return R::getRedBean()->dispense($table_name);
 });
 $note = R::xdispense('lead_notes');
+#######################################################
+function RemoveEmptySubFolders($path)
+{
+  $empty=true;
+  foreach (glob($path.DIRECTORY_SEPARATOR."*") as $file)
+  {
+     $empty &= is_dir($file) && RemoveEmptySubFolders($file);
+  }
+//   var_dump($empty);
+  return $empty && rmdir($path);
+}
+$path = $_SERVER['DOCUMENT_ROOT'].'/img';
 
+RemoveEmptySubFolders($path);
+#######################################################
 
 $number = 151;
 switch (true){
