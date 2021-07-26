@@ -1,0 +1,30 @@
+class Log
+{
+
+    protected $dir;
+    public function __construct()
+    {
+        $this->dir = $_SERVER['DOCUMENT_ROOT'] . '/logs';
+    }
+
+
+    public static function save($error, $channel = 'base',$debug = false)
+    {
+        $new = new static();
+        $backtrace = $debug? debug_backtrace():'';
+        $file_name = $new->dir . '/' . $channel . '_' . date('Y-m-d') . '.log';
+
+        $s = '-';
+        for ($i = 0; $i < 50; $i++) {
+            $s .= '-';
+        }
+
+        $b_t = $backtrace?PHP_EOL.print_r($backtrace, TRUE).PHP_EOL.  $s . PHP_EOL.$s:'';
+
+        $ready = 'DateTime:' . date('Y-m-d H:i:s') . PHP_EOL. print_r($error ,true). PHP_EOL.$s.$b_t.PHP_EOL ;
+        $fp = fopen($file_name, 'a+');
+        fwrite($fp, $ready);
+        fclose($fp);
+    }
+
+}
